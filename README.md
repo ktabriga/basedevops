@@ -3,9 +3,11 @@ Essa configuração de infraestrutura feita em arquivos de docker-compose permit
 A base dessa configuração é um proxy reverso utilizando o traefik, um registry para armazenamento e distribuição de imagens docker e o portainer que permite o fácil gerenciamento de containers.
 
 Uma dessas praticas é a utilização de um proxy como camada de entrada da internet. Essa é a responsabilidade do traefik. Ele recebe todas as requisições da internet e delega para os container respectivos normalmente seguindo regras de url.
-Além disso o traefik também possui loadbalance, service discovery para os container e um configuração que gerar certificados ssl atravez do letsencrypt de forma automática.
+Além disso o traefik também possui loadbalance, service discovery para os container e um configuração que gerar certificados ssl atravez do letsencrypt de forma automática.<br/>
+[Documentação oficial do traefik](https://docs.traefik.io/)
 
-Já o portainer é uma interface visual para gerências containers do docker, o qual permite visualizar os container e várias informações sobre eles.
+Já o portainer é uma interface visual para gerências containers do docker, o qual permite visualizar os container e várias informações sobre eles.<br/>
+[Documentação oficial do portainer](https://www.portainer.io/)
 
 ## Start para fazer um teste local
 Se você desejar fazer um teste local em sua maquina é necessário fazer algumas configurações.
