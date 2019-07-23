@@ -1,0 +1,32 @@
+debug = false
+
+logLevel = "ERROR"
+defaultEntryPoints = ["https","http"]
+
+[entryPoints]
+  [entryPoints.http]
+  address = ":80"
+    [entryPoints.http.redirect]
+    entryPoint = "https"
+  [entryPoints.https]
+  address = ":443"
+  [entryPoints.https.tls]
+
+[retry]
+
+[docker]
+endpoint = "unix:///var/run/docker.sock"
+domain = "eurekalabs.com.br"
+watch = true
+exposedByDefault = false
+
+[acme]
+email = "jhonatancatabriga@gmail.com"
+storage = "acme.json"
+entryPoint = "https"
+onHostRule = true
+[acme.httpChallenge]
+entryPoint = "http"
+[[acme.domains]]
+  main = "eurekalabs.com.br"
+  sans = ["registry.eurekalabs.com.br"]

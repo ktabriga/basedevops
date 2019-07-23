@@ -1,0 +1,51 @@
+version: '3.7'
+services:
+  portainer:
+    image: portainer/portainer
+    command: -H unix:///var/run/docker.sock --admin-password '$$2y$$05$$BR.kUeBRWgCO4THtB/j55uSc6A5ZLbjN2XbSIOcdgtukijPQSuHyi'
+    networks:
+      - proxy
+    volumes:
+      - portainer-data:/data
+      - /var/run/docker.sock:/var/run/docker.sock
+    labels:
+      - "traefik.enable=true"
+      - "traefik.port=9000"
+      - "traefik.frontend.rule=Host:portainer.localhost"
+  registry:
+    image: registry:2.6.2
+    networks:
+      - proxy
+    environment:
+      REGISTRY_AUTH: htpasswd
+      REGISTRY_AUTH_HTPASSWD_REALM: Registry Realm
+      REGISTRY_AUTH_HTPASSWD_PATH: /auth/htpasswd
+    volumes:
+      - /var/lib/registry:/var/lib/registry
+      - ./auth:/auth/
+    labels:
+      - "traefik.enable=true"
+      - "traefik.port=5000"
+      - "traefik.frontend.rule=Host:registry.localhost"
+  traefik:
+    image: traefik
+    command: --api
+    networks:
+      - proxy
+    ports:
+      - "80:80"
+      - "443:443"
+      - "8080:8080"
+    labels:
+      - "traefik.enable=false"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./traefik.toml:/traefik.toml
+      - ./acme.json:/acme.json
+
+networks:
+  proxy:
+
+volumes:
+  portainer-data:
+
