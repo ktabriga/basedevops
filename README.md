@@ -1,4 +1,4 @@
-#Applications Devops
+# Applications Devops
 Essa configuração de infraestrutura feita em arquivos de docker-compose permite a disponibilização de aplicações seguindo as melhores práticas de infraestrutura e devops.
 A base dessa configuração é um proxy reverso utilizando o traefik, um registry para armazenamento e distribuição de imagens docker e o portainer que permite o fácil gerenciamento de containers.
 
@@ -7,7 +7,7 @@ Além disso o traefik também possui loadbalance, service discovery para os cont
 
 Já o portainer é uma interface visual para gerências containers do docker, o qual permite visualizar os container e várias informações sobre eles.
 
-##Start para fazer um teste local
+## Start para fazer um teste local
 Se você desejar fazer um teste local em sua maquina é necessário fazer algumas configurações.
 Essa teste ira ajudar você a entender o fluxo e funcionamento dessa configuração de infraestrutura.
 
@@ -24,7 +24,7 @@ Essa teste ira ajudar você a entender o fluxo e funcionamento dessa configuraç
 7. Veja o app na interface do traefik(localhost:8080) e acesse ele no meuapp.localhost
 
 
-##Configurando autenticação do registry
+## Configurando autenticação do registry
 Rode o seguinte comando na raiz deste diretório para criar um novo usuário e senha para acessar seu registry.
 ```
 docker run \
@@ -32,7 +32,7 @@ docker run \
   registry:2 -Bbn testuser testpassword > auth/htpasswd
 ```
 
-##Configurando autenticação do portainer
+## Configurando autenticação do portainer
 Para gerar um novo password para o portainer rode o seguinte comando substituindo o <password> por sua senha:
 ```
 docker run --rm httpd:2.4-alpine htpasswd -nbB admin <password> | cut -d ":" -f 2
