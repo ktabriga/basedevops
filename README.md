@@ -1,4 +1,4 @@
-# Applications Devops
+# Stack Devops
 Essa configuração de infraestrutura feita em arquivos de docker-compose permite a disponibilização de aplicações seguindo algumas das melhores práticas de infraestrutura e devops.
 A base dessa configuração é um proxy reverso utilizando o traefik, um registry para armazenamento e distribuição de imagens docker e o portainer que permite o fácil gerenciamento de containers.
 
