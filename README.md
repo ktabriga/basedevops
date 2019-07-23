@@ -12,14 +12,14 @@ Se você desejar fazer um teste local em sua maquina é necessário fazer alguma
 Essa teste ira ajudar você a entender o fluxo e funcionamento dessa configuração de infraestrutura.
 
 1. Adicione a seguinte regra no seu arquivo de hosts(no linux é o /etc/hosts)
-  * 127.0.0.1	registry.localhost portainer.localhost meuapp.localhost
+    1. 127.0.0.1	registry.localhost portainer.localhost meuapp.localhost
 2. Rode o comando 'docker-compose -f infra/docker-compose.yml up -d' para iniciar a stack de infra
 3. Acesse o localhost:8080 para ver a interface gráfica do traefik.
-  * Você ira ver 2 backends e 2 frontends, basicamente é a regra e entrada e pra qual serviço ela redireciona.
+    1. Você ira ver 2 backends e 2 frontends, basicamente é a regra e entrada e pra qual serviço ela redireciona.
 4. Acesse o portainer.localhost para acessar o portainer com usuário 'admin' e senha 'test'.
-  * Vai aparecer uma paginá com erro de segurança. Isso é porque o traefik está redirecionando para https mas não consegue gerar certificado local.
+    1. Vai aparecer uma paginá com erro de segurança. Isso é porque o traefik está redirecionando para https mas não consegue gerar certificado local.
 5. Faça login no registry local com o serguinte comando: docker login registry.localhost
-  * Usuário: testuser Senha: testpassword
+    1. Usuário: testuser Senha: testpassword
 6. Rode o comando 'docker-compose -f app/docker-compose.yml up -d' para iniciar a stack de apps
 7. Veja o app na interface do traefik(localhost:8080) e acesse ele no meuapp.localhost
 
